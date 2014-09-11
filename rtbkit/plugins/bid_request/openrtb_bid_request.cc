@@ -101,6 +101,14 @@ fromOpenRtb(OpenRTB::BidRequest && req,
                 Format format(v.w.value(), v.h.value());
                 spot.formats.push_back(format);
             }
+            vector<string> values;
+	    if (imp.instl.val > 0)
+		values.push_back("instl");	
+	    if (spot.video)
+		values.push_back("video");	
+	    if (spot.banner)
+		values.push_back("banner");
+	    result->segments.addStrings("imptype", values);	
 
 #if 0
             if (imp.banner) {

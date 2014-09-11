@@ -1,8 +1,24 @@
 /* -*- js-mode -*- */
 [
     {
-        "exchangeType": "mock",
+        "exchangeType": "nexage",
         "listenPort": 12339,
+        "bindHost": "0.0.0.0",
+        "auctionVerb": "POST",
+        "auctionResource": "/auctions",
+        "performNameLookup": false
+    },
+    {
+        "exchangeType": "bidswitch",
+        "listenPort": 12342,
+        "bindHost": "0.0.0.0",
+        "auctionVerb": "POST",
+        "auctionResource": "/auctions",
+        "performNameLookup": false
+    },
+    {
+        "exchangeType": "mopub",
+        "listenPort": 12345,
         "bindHost": "0.0.0.0",
         "auctionVerb": "POST",
         "auctionResource": "/auctions",

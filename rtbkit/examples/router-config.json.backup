@@ -1,0 +1,27 @@
+/* -*- js-mode -*- */
+[
+    {
+        "exchangeType": "nexage",
+        "listenPort": 18142,
+        "bindHost": "0.0.0.0",
+        "auctionVerb": "POST",
+        "auctionResource": "/auctions",
+        "performNameLookup": false
+    },
+    {
+        "exchangeType": "mopub",
+        "listenPort": 18145,
+        "bindHost": "0.0.0.0",
+        "auctionVerb": "POST",
+        "auctionResource": "/auctions",
+        "performNameLookup": false
+    },
+    {
+        "exchangeType": "openrtb",
+        "listenPort": 12340,
+        "bindHost": "0.0.0.0",
+        "auctionVerb": "POST",
+        "auctionResource": "/auctions",
+        "performNameLookup": false
+    }
+]

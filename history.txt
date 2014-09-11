@@ -1,0 +1,1000 @@
+ 1060  git status .
+ 1061  cd ..
+ 1062  git status .
+ 1063  cd ../exc
+ 1064  cd exchange/
+ 1065  vim mopub_exchange_connector.cc
+ 1066  vim mopub_exchange_connector.h
+ 1067  vim nexage_exchange_connector.h
+ 1068  vim nexage_exchange_connector.cc 
+ 1069  cd ..
+ 1070  cd examples/
+ 1071  cd ../../soa/
+ 1072  cd service/
+ 1073  vim json_endpoint.cc
+ 1074  vim http_endpoint.cc 
+ 1075  vim json_endpoint.cc
+ 1076  vim http_endpoint.cc 
+ 1077  git diff  http_endpoint.cc 
+ 1078  vim http_endpoint.cc 
+ 1079  git status
+ 1080  cd ../..
+ 1081  git status
+ 1082  cd soa/service/
+ 1083  vim http_endpoint.cc 
+ 1084  grep -e "header.contentType" *.cc
+ 1085  vim json_endpoint.cc 
+ 1086  vim json_endpoint.cc  http_endpoint.cc
+ 1087  vim json_endpoint.cc 
+ 1088  vim json_endpoint.cc  http_endpoint.cc  
+ 1089  vim json_endpoint.cc  http_endpoint.cc
+ 1090  git status .
+ 1091  git diff json_endpoint.cc
+ 1092  vim json_endpoint.cc  
+ 1093  vim json_endpoint.cc  http_endpoint.cc
+ 1094  cd ../../rtbkit/examples/
+ 1095  git status .
+ 1096  grep -e "adserver request jsonStr" *.cc
+ 1097  cd ../plugins/
+ 1098  cd adserver/
+ 1099  grep -e "adserver request jsonStr" *.cc
+ 1100  vim http_adserver_connector.cc 
+ 1101  grep  http_adserver_connector.cc 
+ 1102  git  diff  http_adserver_connector.cc 
+ 1103  grep -e "Amount fromJson: "100000USD/1M"
+ 1104  grep -e "Amount fromJson: "100000USD/1M" *.cc
+ 1105  grep -e "Amount fromJson: " *.cc
+ 1106  cd ../../../soa/service/
+ 1107  grep -e "Amount fromJson: " *.cc
+ 1108  grep -e "Amount fromJson" *.cc
+ 1109  cd -
+ 1110  grep -e "Amount fromJson" *.cc
+ 1111  cd ../..
+ 1112  cd ..
+ 1113  cd soa/service/
+ 1114  grep -e "ttpAdServerConnectionHandler::handleJso" *.cc
+ 1115  grep -e "ttpAdServerConnectionHandler" *.cc
+ 1116  ls -l
+ 1117  git status .
+ 1118  vim json_endpoint.cc http_endpoint.cc 
+ 1119  grep handleJson *.cc
+ 1120  vim json_endpoint.cc 
+ 1121  cd ../..
+ 1122  git sttaus .
+ 1123  git status .
+ 1124  git diff tbkit/plugins/adserver/http_adserver_connector.cc
+ 1125  git diff rtbkit/plugins/adserver/http_adserver_connector.cc
+ 1126  vim rtbkit/plugins/adserver/http_adserver_connector.cc
+ 1127  cd soa/service/
+ 1128  grep -e "JSON payload" *.cc
+ 1129  vim json_endpoint.cc 
+ 1130  git diff .
+ 1131  vim json_endpoint.cc 
+ 1132  git diff .
+ 1133  vim json_endpoint.cc 
+ 1134  git diff .
+ 1135  cd ../..
+ 1136  git status .
+ 1137  git diff rtbkit/common/currency.cc
+ 1138  git diff  rtbkit/common/auction_events.cc
+ 1139  vim rtbkit/common/currency.cc
+ 1140  git diff  rtbkit/common/currency.cc
+ 1141  vim rtbkit/common/currency.cc
+ 1142  git diff  rtbkit/common/currency.cc
+ 1143  vim rtbkit/common/currency.cc
+ 1144  git diff  rtbkit/common/currency.cc
+ 1145  vim rtbkit/common/currency.cc
+ 1146  git diff  rtbkit/common/currency.cc
+ 1147  vim rtbkit/common/currency.cc
+ 1148  git diff  rtbkit/common/currency.cc
+ 1149  git diff  rtbkit/common/auction_events.cc
+ 1150  vim   rtbkit/common/auction_events.cc
+ 1151  git status .
+ 1152  git diff  rtbkit/examples/bidding_agent_ex.cc
+ 1153  vim  rtbkit/examples/bidding_agent_ex.cc
+ 1154  git diff  rtbkit/examples/bidding_agent_ex.cc
+ 1155  git status .
+ 1156  exit
+ 1157  cd git/3p/rtbkit/
+ 1158  cd logs/
+ 1159  ls -ltr | tail -10 | cut -c 51-
+ 1160  grep -e "DeliveryEvent::parse" `ls -ltr | tail -10 | cut -c 51-`
+ 1161  grep -e "DeliveryEvent::parse" `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1162  ls -ltr *.log | tail -9 | cut -c 51-
+ 1163  ls -ltr *.log | tail -10 | cut -c 51-
+ 1164  ls -ltr *.log | tail -9 | cut -c 51-
+ 1165  grep -e "DeliveryEvent::parse" `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1166  grep -e "DeliveryEvent::" `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1167  grep -e "DeliveryEvent" `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1168  grep -e "adserver request " `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1169  grep -e "Received bidRequest" `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1170  vim  `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1171  vls  `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1172  ls  `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1173  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1174  vim  `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1175  vim augmentor-18983.log  ad-server-18967.log router-18984.log fixed-price-agent-18989.log
+ 1176  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1177  vim  augmentor-30205.log  ad-server-30192.log  router-30207.log fixed-price-agent-30211.log 
+ 1178  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1179  vim  fixed-price-agent-31807.log augmentor-31790.log  ad-server-31777.log router-31798.log
+ 1180  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1181  vim ad-server-989.log augmentor-1001.log fixed-price-agent-1012.log router-1004.log
+ 1182  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1183  vim augmentor-1788.log fixed-price-agent-1796.log router-1791.log ad-server-1778.log 
+ 1184  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1185  tail -f  augmentor-4460.log
+ 1186  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1187  tail -f  router-4461.log
+ 1188  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1189  tail -f  monitor-4447.log 
+ 1190  tail -f  post-auction-4465.log
+ 1191  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1192  du -s .
+ 1193  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1194  du -s .
+ 1195  du -s  router-4461.log
+ 1196  df .
+ 1197  du -s  router-4461.log
+ 1198  df .
+ 1199  du -s  router-4461.log
+ 1200  df .
+ 1201  cp -p router-4461.log  saved-router-4461.log
+ 1202  df .
+ 1203  du -s  router-4461.log
+ 1204  ls -l saved-router-4461.log 
+ 1205  du -s  router-4461.log
+ 1206  ls -l  router-4461.log  saved-router-4461.log
+ 1207  du -s   router-4461.log  saved-router-4461.log
+ 1208  df .
+ 1209  du -s   router-4461.log  saved-router-4461.log
+ 1210  ls -l    router-4461.log  saved-router-4461.log
+ 1211  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1212  cp -p router-4461.log  saved-router-4461.log
+ 1213  sync
+ 1214  df .
+ 1215  ls  -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1216  ls -l    router-4461.log  saved-router-4461.log
+ 1217  ls -ltr *.log | tail -9 | cut -c 51-
+ 1218  ls -ltr `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1219  ls -ltr *.log | tail -9 | cut -c 51-
+ 1220  ls -ltr *.log | tail -11 | cut -c 51-
+ 1221  ls -l    router-4461.log  saved-router-4461.log
+ 1222  ls -l    router-4461.log  router-4961.log   saved-router-4461.log
+ 1223  ls -ltr | tail -15
+ 1224  ls -ltr | tail -12
+ 1225  cp -p router-4461.log  saved-router-4461.log
+ 1226  sync
+ 1227  ls -ltr | tail -12
+ 1228  sync
+ 1229  ls -ltr | tail -12
+ 1230  tail -f router-4961.log
+ 1231  ls -ltr | tail -12
+ 1232  tail -f router-4961.log
+ 1233  ls -ltr | tail -12
+ 1234  cp -p router-4961.log saved-router-4961.log
+ 1235  ls -ltr | tail -13
+ 1236  ls -ltr | tail -13 | grep router
+ 1237  exit
+ 1238  cd git/3p/rtbkit/
+ 1239  git status
+ 1240  cd rtbkit/
+ 1241  git status .
+ 1242  cd plugins/exchange/
+ 1243  git status .
+ 1244  vim nexage_exchange_connector.cc 
+ 1245  cd -
+ 1246  git status .
+ 1247  git diff plugins/bidding_agent/bidding_agent.cc
+ 1248  git status .
+ 1249  git diff examples/bidding_agent_ex.cc
+ 1250  vim examples/bidding_agent_ex.cc
+ 1251  cd ..
+ 1252  ls ..
+ 1253  ls ../backup/
+ 1254  ls -l ../backup/
+ 1255  git diff >  ../backup/gdiff 
+ 1256  ls -l ../backup/
+ 1257  sync
+ 1258  cd -
+ 1259  vim examples/bidding_agent_ex.cc
+ 1260  vim examples/bidding_agent_ex.h
+ 1261  vim examples/bidding_agent_ex.cc 
+ 1262  find . -name "*.h" -exec grep -e sampleLB {} \; -print
+ 1263  vim core/agent_configuration/agent_config.h 
+ 1264  vim testing/test_agent.h 
+ 1265  find . -name "*.cc" -exec grep -e sampleLB {} \; -print
+ 1266  ./core/router/testing/router_banker_test.cc ./plugins/exchange/testing/adx_exchange_connector_test.cc ./core/agent_configuration/agent_config.cc 
+ 1267  vim ./core/router/testing/router_banker_test.cc ./plugins/exchange/testing/adx_exchange_connector_test.cc ./core/agent_configuration/agent_config.cc 
+ 1268  vim ./examples/bidding_agent_console.cc ./examples/multi_agent.cc ./testing/creative_configuration_test.cc ./testing/static_filtering_test.cc ./examples/bidding_agent_ex.cc 
+ 1269  git status .
+ 1270  vim ./examples/bidding_agent_ex.cc ^C
+ 1271  vim ./examples/bidding_agent_ex.cc 
+ 1272  git status .
+ 1273  git diff plugins/exchange/nexage_exchange_connector.cc
+ 1274  vim  plugins/exchange/nexage_exchange_connector.cc
+ 1275  git status .
+ 1276  git diff plugins/augmentor/augmentor_base.cc
+ 1277  vim plugins/augmentor/augmentor_base.cc
+ 1278  git status .
+ 1279  vim examples/bidding_agent_ex.cc
+ 1280  find . -name "*.cc" -exec grep -e sampleLB {} \; -print
+ 1281  find . -name "*.cc" -exec grep -e FixedPriceBiddingAgent {} \; -print
+ 1282  vim examples/bidding_agent_ex.cc
+ 1283  find . -name "*.cc" -exec grep -e "br->dev" {} \; -print
+ 1284  find . -name "*.cc" -exec grep -e "dev" {} \; -print
+ 1285  find . -name "*.cc" -exec grep -e "device" {} \; -print
+ 1286  find . -name "*.cc" -exec grep -e "device->model" {} \; -print
+ 1287  vim examples/bidding_agent_ex.cc ./plugins/bid_request/appnexus_bid_request.cc ./plugins/bid_request/openrtb_bid_request.cc 
+ 1288  git diff  examples/bidding_agent_ex.cc 
+ 1289  find . -name "*.cc" -exec grep -e "device->model" {} \; -print
+ 1290  vim examples/bidding_agent_ex.cc 
+ 1291  git diff  examples/bidding_agent_ex.cc 
+ 1292  vim examples/bidding_agent_ex.cc 
+ 1293  find . -name "*.cc" -exec grep -e "imp.*instl" {} \; -print
+ 1294  vim examples/bidding_agent_ex.cc 
+ 1295  cd git/3p/rtbkit/
+ 1296  tmux attach-session -t rtb
+ 1297  cd git/3p/rtbkit/
+ 1298  make compile
+ 1299  vim  ../backup/gdiff 
+ 1300  make compile
+ 1301  cd git/3p/rtbkit/
+ 1302  history | grep netstat
+ 1303  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1304  ./launch.sh 
+ 1305  cd logs/
+ 1306  ls -ltr | tail -10
+ 1307  vim router-16857.log
+ 1308  cd -
+ 1309  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1310  ./launch.sh 
+ 1311  exit
+ 1312  cd git/3p/rtbkit/
+ 1313  cd rtbkit/
+ 1314  vim  examples/bidding_agent_ex.cc
+ 1315  tmux attach-session -t rtb find . -name "*.cc" -exec grep -e "imp[" {} \; -print
+ 1316  find . -name "*.cc" -exec grep -e "imp[" {} \; -print
+ 1317  find . -name "*.cc" -exec grep -e "imp\[" {} \; -print
+ 1318  find . -name "*.cc" -exec grep -e "imp\[.*format" {} \; -print
+ 1319  vim ./testing/bid_aggregator_test.cc  
+ 1320  find . -name "*.cc" -exec grep -e "rep->imp\[." {} \; -print
+ 1321  find . -name "*.cc" -exec grep -e "req->imp\[." {} \; -print
+ 1322  find . -name "*.cc" -exec grep -e "req.*->imp\[." {} \; -print
+ 1323  vim  examples/bidding_agent_ex.cc
+ 1324  vim  examples/bidding_agent_ex.cc 
+ 1325  git status .
+ 1326  vim plugins/exchange/nexage_exchange_connector.cc
+ 1327  vim  examples/bidding_agent_ex.cc
+ 1328  exit
+ 1329  cd git/3p/rtbkit/
+ 1330  make compile
+ 1331  vim  ../backup/gdiff 
+ 1332  make compile
+ 1333  exit
+ 1334  cd git/3p/rtbkit/
+ 1335  tmux attach-session -t check
+ 1336  exit
+ 1337  cd git/3p/rtbkit/
+ 1338  tmux attach-session -t win_server
+ 1339  cd ../nodebootstrap/
+ 1340  ls
+ 1341  tmux attach-session -t win_server
+ 1342  ls
+ 1343  cat hello.js 
+ 1344  more hello.js 
+ 1345  tail hello.js 
+ 1346  tmux attach-session -t win_server
+ 1347  ls -l
+ 1348  vim hello.js 
+ 1349  ./win_server.sh 
+ 1350  exit
+ 1351  cd git/3p/rtbkit/
+ 1352  cd logs/
+ 1353  ls -ltr | tail -10
+ 1354  ls -ltr *.log | tail -10
+ 1355  vim fixed-price-agent-17581.log
+ 1356  ls -ltr *.log | tail -11
+ 1357  ls -ltr *.log | tail -12
+ 1358  ls -ltr *.log | tail -11
+ 1359  ls -ltr *.log | tail -11 | cut -c 51-
+ 1360  vim fixed-price-agent-17466.log
+ 1361  ls -ltr *.log | tail -11 | cut -c 51-
+ 1362  vim fixed-price-agent-20277.log
+ 1363  ls -ltr *.log | tail -11 | cut -c 51-
+ 1364  ls -ltr *.log | tail -9 | cut -c 51-
+ 1365  ls -ltr *.log | tail -9 
+ 1366  ls -ltr *.log | tail -910
+ 1367  ls -ltr *.log | tail -10
+ 1368  ls -ltr *.log | tail -18
+ 1369  ls -ltr *.log | tail -9
+ 1370  ls -ltr *.log | tail -9 | cut -c 51-
+ 1371  vim `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1372  ls -ltr *.log | tail -9 | cut -c 51-
+ 1373  vim `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1374  ls -ltr *.log | tail -9 | cut -c 51-
+ 1375  vim `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1376  ls -ltr *.log | tail -9 | cut -c 51-
+ 1377  ls -ltr *.log | tail -10 | cut -c 51-
+ 1378  vim `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1379  tail -f fixed-price-agent-22109.log
+ 1380  ls -ltr *.log | tail -10 | cut -c 51-
+ 1381  vim router-22101.log
+ 1382  ls -ltr *.log | tail -10 | cut -c 51-
+ 1383  tail -f fixed-price-agent-23310.log 
+ 1384  ls -ltr *.log | tail -10 | cut -c 51-
+ 1385  vim router-23307.log
+ 1386  tail -f fixed-price-agent-23310.log 
+ 1387  ls -ltr *.log | tail -10 | cut -c 51-
+ 1388  vim `ls -ltr *.log | tail -9 | cut -c 51-`
+ 1389  ls -ltr *.log | tail -10 | cut -c 51-
+ 1390  tail -f fixed-price-agent-24499.log
+ 1391  ls -ltr *.log | tail -10 | cut -c 51-
+ 1392  tail -f fixed-price-agent-25372.log
+ 1393  ls -ltr *.log | tail -10 | cut -c 51-
+ 1394  tail -f fixed-price-agent-26262.log
+ 1395  ls -ltr *.log | tail -10 | cut -c 51-
+ 1396  vim fixed-price-agent-26262.log
+ 1397  ls -ltr *.log | tail -10 | cut -c 51-
+ 1398  tail -f fixed-price-agent-27483.log
+ 1399  ls -ltr *.log | tail -10 | cut -c 51-
+ 1400  vim router-27478.log
+ 1401  vim  fixed-price-agent-27483.log
+ 1402  ls -ltr *.log | tail -10 | cut -c 51-
+ 1403  vim fixed-price-agent-28085.log
+ 1404  ls -ltr *.log | tail -10 | cut -c 51-
+ 1405  vim fixed-price-agent-28676.log
+ 1406  tail -f  fixed-price-agent-28676.log
+ 1407  vim fixed-price-agent-28676.log
+ 1408  ls -ltr *.log | tail -10 | cut -c 51-
+ 1409  vim router-28672.log
+ 1410  ls -ltr *.log | tail -10 | cut -c 51-
+ 1411  tail -f fixed-price-agent-29706.log
+ 1412  cd git/3p/rtbkit/
+ 1413  cd rtbkit/
+ 1414  git status .
+ 1415  vim examples/bidding_agent_ex.cc
+ 1416  git diff  examples/bidding_agent_ex.cc
+ 1417  vim examples/bidding_agent_ex.cc
+ 1418  git status .
+ 1419  ls -l examples/bidding_agent_ex.cc plugins/exchange/nexage_exchange_connector.cc
+ 1420  git diff  examples/bidding_agent_ex.cc plugins/exchange/nexage_exchange_connector.cc
+ 1421  vim   examples/bidding_agent_ex.cc plugins/exchange/nexage_exchange_connector.cc
+ 1422  git diff  examples/bidding_agent_ex.cc plugins/exchange/nexage_exchange_connector.cc
+ 1423  vim   examples/bidding_agent_ex.cc plugins/exchange/nexage_exchange_connector.cc
+ 1424  find . -name "*.cc" -exec grep -e "req.*->imp\[." {} \; -print
+ 1425  find . -name "*.cc" -exec grep -e "sampleLB" {} \; -print
+ 1426  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_console.cc  ./examples/multi_agent.cc ./testing/static_filtering_test.cc 
+ 1427  vim   examples/bidding_agent_ex.cc plugins/exchange/nexage_exchange_connector.cc
+ 1428  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_console.cc  ./examples/multi_agent.cc ./testing/static_filtering_test.cc 
+ 1429  git diff ./core/agent_configuration/agent_config.cc
+ 1430  vim  ./core/agent_configuration/agent_config.cc
+ 1431  git diff ./core/agent_configuration/agent_config.cc
+ 1432  vim  ./core/agent_configuration/agent_config.cc
+ 1433  git diff ./core/agent_configuration/agent_config.cc
+ 1434  vim  ./core/agent_configuration/agent_config.cc
+ 1435  sudo tcpdump -n -tttt -vvv -X -p -i eth0 tcp port 18143
+ 1436  vim  ./core/agent_configuration/agent_config.cc
+ 1437  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc 
+ 1438  find . -name "*.cc" -exec grep -e "sampleLB" {} \; -print
+ 1439  find . -name "*.cc" -exec grep -e "config.creatives" {} \; -print
+ 1440  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc  ./core/router/router.cc
+ 1441  cd git/3p/rtbkit/
+ 1442  make compile
+ 1443  history | grep tcpdump
+ 1444  sudo tcpdump -n -tttt -vvv -X -p -i eth0 tcp port 18142
+ 1445  make compile
+ 1446  sudo tcpdump -n -tttt -vvv -X -p -i eth0 tcp port 18142
+ 1447  sudo tcpdump -n -tttt -vvv -X -p -i eth0 tcp port 18142 
+ 1448  make compile
+ 1449  cd git/3p/rtbkit/
+ 1450  tmux attach-session -t rtb
+ 1451  ./launch.sh 
+ 1452  history | grep netstat
+ 1453  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1454  ./launch.sh 
+ 1455  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1456  ./launch.sh 
+ 1457  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1458  ./launch.sh 
+ 1459  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1460  ./launch.sh 
+ 1461  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1462  ./launch.sh 
+ 1463  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1464  tmux list-sessions
+ 1465  tmux attach-session -t rtb
+ 1466  tmux list-sessions
+ 1467  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1468  ./launch.sh 
+ 1469  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1470  ./launch.sh 
+ 1471  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1472  ./launch.sh 
+ 1473  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1474  ./launch.sh 
+ 1475  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1476  ./launch.sh 
+ 1477  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1478  ./launch.sh 
+ 1479  cd git/3p/rtbkit/
+ 1480  make compile
+ 1481  exit
+ 1482  cd git/3p/rtbkit/
+ 1483  cd logs/
+ 1484  ls -l examples/bidding_agent_ex.cc plugins/exchange/nexage_exchange_connector.cc
+ 1485  ls -ltr | tail -10 | cut -c 51-
+ 1486  vim fixed-price-agent-29706.log
+ 1487  ls -ltr | tail -10 | cut -c 51-
+ 1488  vim fixed-price-agent-31904.log
+ 1489  tail -f fixed-price-agent-31904.log
+ 1490  vim fixed-price-agent-31904.log
+ 1491  ls -ltr | tail -10 | cut -c 51-
+ 1492  tail -f fixed-price-agent-32492.log
+ 1493  ls -ltr | tail -10 | cut -c 51-
+ 1494  tail -f fixed-price-agent-5193.log
+ 1495  ls -ltr | tail -10 | cut -c 51-
+ 1496  tail -f fixed-price-agent-5780.log
+ 1497  ls -ltr | tail -10 | cut -c 51-
+ 1498  tail -f fixed-price-agent-6366.log
+ 1499  ls -ltr | tail -10 | cut -c 51-
+ 1500  tail -f fixed-price-agent-7147.log
+ 1501  ls -ltr | tail -10 | cut -c 51-
+ 1502  tail -f fixed-price-agent-7737.log
+ 1503  exit
+ 1504  cd git/3p/rtbkit/
+ 1505  cd rtbkit/
+ 1506  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc  ./core/router/router.cc
+ 1507  vim examples/bidding_agent_ex.cc 
+ 1508  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc  ./core/router/router.cc
+ 1509  git diff  ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc  ./core/router/router.cc
+ 1510  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc  ./core/router/router.cc
+ 1511  git diff  ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc  ./core/router/router.cc
+ 1512  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc  ./core/router/router.cc
+ 1513  exit
+ 1514  cd git/3p/rtbkit/
+ 1515  tmux attach-session -t rtb
+ 1516  history | grep netstat
+ 1517  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1518  ./launch.sh 
+ 1519  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1520  ./launch.sh 
+ 1521  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1522  ./launch.sh 
+ 1523  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1524  ./launch.sh 
+ 1525  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1526  ./launch.sh 
+ 1527  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1528  ./launch.sh 
+ 1529  exit
+ 1530  cd git/3p/rtbkit/
+ 1531  tmux attach-session -t check
+ 1532  exit
+ 1533  cd git/3p/rtbkit/
+ 1534  cd ../nodebootstrap/
+ 1535  ls
+ 1536  tmux attach-session -t win_server
+ 1537  exit
+ 1538  cd git/3p/rtbkit/
+ 1539  make compile
+ 1540  find rtbkit/ -name "*.cc" -exec grep -e "got no bid request" {} \; -print
+ 1541  vim rtbkit/plugins/exchange/http_auction_handler.cc
+ 1542  make compile
+ 1543  find rtbkit/ -name "*.cc" -exec grep -e "sampleLB" {} \; -print
+ 1544  make compile
+ 1545  find rtbkit/ -name "*.h" -exec grep -e "sampleLB" {} \; -print
+ 1546  vim rtbkit/core/agent_configuration/agent_config.h
+ 1547  find rtbkit/ -name "*.h" -exec grep -e "sampleLB" {} \; -print
+ 1548  make compile
+ 1549  exit
+ 1550  cd git/3p/rtbkit/
+ 1551  cd rtbkit/
+ 1552  git status
+ 1553  vim plugins/exchange/nexage_exchange_connector.cc examples/bidding_agent_ex.cc
+ 1554  git diff plugins/exchange/nexage_exchange_connector.cc examples/bidding_agent_ex.cc
+ 1555  vim plugins/exchange/nexage_exchange_connector.cc examples/bidding_agent_ex.cc
+ 1556  history
+ 1557  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc 
+ 1558  git status
+ 1559  vim examples/adserver-config.json examples/router-config.json
+ 1560  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc 
+ 1561  vim plugins/exchange/nexage_exchange_connector.cc
+ 1562  vim plugins/exchange/openrtb_exchange_connector.cc 
+ 1563  vim plugins/exchange/openrtb_exchange_connector.cc  plugins/exchange/nexage_exchange_connector.cc
+ 1564  vim plugins/exchange/openrtb_exchange_connector.[ch]*
+ 1565  vim plugins/exchange/openrtb_exchange_connector.cc  plugins/exchange/nexage_exchange_connector.cc
+ 1566  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc 
+ 1567  git status
+ 1568  git diff  plugins/augmentor/augmentor_base.cc
+ 1569  git status
+ 1570  git diff  plugins/exchange/nexage_exchange_connector.h
+ 1571  git diff  plugins/exchange/nexage_exchange_connector.cc
+ 1572  vim ./core/agent_configuration/agent_config.cc ./examples/bidding_agent_ex.cc 
+ 1573  git diff  plugins/exchange/nexage_exchange_connector.cc
+ 1574  git diff  plugins/exchange/mopub_exchange_connector.cc
+ 1575  git status .
+ 1576  vim examples/router-config.json
+ 1577  exit
+ 1578  cd git/3p/rtbkit/
+ 1579  cd logs/
+ 1580  ls -ltr | tail -10 | cut -c 51-
+ 1581  tail -f fixed-price-agent-13434.log
+ 1582  ls -ltr | tail -10 | cut -c 51-
+ 1583  vim `ls -ltr | tail -9 | cut -c 51-`
+ 1584  ls -ltr | tail -10 | cut -c 51-
+ 1585  ls -ltr | tail -11 | cut -c 51-
+ 1586  tail -f fixed-price-agent-14235.log
+ 1587  ls -ltr | tail -11 | cut -c 51-
+ 1588  vim router-18061.log
+ 1589  ls -ltr | tail -11 | cut -c 51-
+ 1590  vim router-18061.log
+ 1591  ls -ltr | tail -11 | cut -c 51-
+ 1592  vim router-19587.log  fixed-price-agent-19594.log
+ 1593  ls -ltr | tail -11 | cut -c 51-
+ 1594  vim  router-21320.log fixed-price-agent-21325.log
+ 1595  tail -f fixed-price-agent-21325.log
+ 1596  ls -ltr | tail -11 | cut -c 51-
+ 1597  vim router-22002.log fixed-price-agent-22010.log
+ 1598  tail -f fixed-price-agent-22010.log
+ 1599  ls -ltr | tail -11 | cut -c 51-
+ 1600  tail -f  fixed-price-agent-22611.log
+ 1601  exit
+ 1602  cd git/3p/rtbkit/
+ 1603  tmux list-sessions
+ 1604  ./launch.sh 
+ 1605  history | grep netstat
+ 1606  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1607  ./launch.sh 
+ 1608  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1609  ./launch.sh 
+ 1610  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1611  ./launch.sh 
+ 1612  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1613  ./launch.sh 
+ 1614  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1615  ./launch.sh 
+ 1616  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1617  ./launch.sh 
+ 1618  exit
+ 1619  cd git/3p/rtbkit/
+ 1620  cd rtbkit/
+ 1621  git status
+ 1622  vim  plugins/bidding_agent/bidding_agent.cc
+ 1623  vim  examples/bidding_agent_ex.cc
+ 1624  cd ..
+ 1625  make compile
+ 1626  exit
+ 1627  cd git/3p/rtbkit/
+ 1628  tmux list-sessions
+ 1629  tmux attach-session -t rtb
+ 1630  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1631  ./launch.sh 
+ 1632  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1633  ./launch.sh 
+ 1634  cd logs/
+ 1635  ls -ltr | tail -11 
+ 1636  vim fixed-price-agent-26141.log router-26126.log
+ 1637  cd -
+ 1638  tmux attach-session -t rtb
+ 1639  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1640  ./launch.sh 
+ 1641  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1642  ./launch.sh 
+ 1643  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1644  ./launch.sh 
+ 1645  exit
+ 1646  cd git/3p/rtbkit/
+ 1647  cd rtbkit/
+ 1648  git status .
+ 1649  vim examples/bidding_agent_ex.cc
+ 1650  cd -
+ 1651  make compile
+ 1652  cd -
+ 1653  vim examples/bidding_agent_ex.cc
+ 1654  cd -
+ 1655  make compile
+ 1656  cd -
+ 1657  vim examples/bidding_agent_ex.cc
+ 1658  cd -
+ 1659  make compile
+ 1660  cd logs/
+ 1661  ls -ltr | tail -11 | cut -c 51-
+ 1662  vim router-26126.log
+ 1663  cd ../rtbkit/
+ 1664  vim examples/bidding_agent_ex.cc
+ 1665  cd ..
+ 1666  make compile
+ 1667  cd -
+ 1668  vim examples/bidding_agent_ex.cc
+ 1669  cd -
+ 1670  make compile
+ 1671  cd -
+ 1672  vim examples/bidding_agent_ex.cc
+ 1673  cd -
+ 1674  make compile
+ 1675  cd -
+ 1676  vim examples/bidding_agent_ex.cc
+ 1677  cd ../logs/
+ 1678  ls -ltr | tail -11 | cut -c 51-
+ 1679  vim fixed-price-agent-28139.log
+ 1680  cd -
+ 1681  cd ..
+ 1682  git status .
+ 1683  vim rtbkit/examples/router-config.json
+ 1684  cp -p  rtbkit/examples/router-config.json  rtbkit/examples/router-config.json.backup
+ 1685  vim rtbkit/examples/router-config.json
+ 1686  make compile
+ 1687  exit
+ 1688  tmux attach-session -t win_server
+ 1689  exit
+ 1690  make compile
+ 1691  exit
+ 1692  cd rtbkit/
+ 1693  git status
+ 1694  git status | grep modified
+ 1695  git status | grep modified | cut -c 20-
+ 1696  git status | grep modified | cut -c 15-
+ 1697  git status | grep modified | cut -c 13-
+ 1698  git status
+ 1699  git status .
+ 1700  git status . | grep modified | cut -c 13-
+ 1701  ls -l 1git status . | grep modified | cut -c 13-`
+ 1702  ls -l `git status . | grep modified | cut -c 13-`
+ 1703  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1704  gdiff core/router/router.cc
+ 1705  git diff core/router/router.cc
+ 1706  git diff core/agent_configuration/agent_config.h
+ 1707  git diff core/agent_configuration/agent_config.cc
+ 1708  vim  core/agent_configuration/agent_config.cc
+ 1709  git diff core/agent_configuration/agent_config.cc
+ 1710  vim  core/agent_configuration/agent_config.cc
+ 1711  git diff core/agent_configuration/agent_config.cc
+ 1712  vim  core/agent_configuration/agent_config.cc
+ 1713  git diff core/agent_configuration/agent_config.cc
+ 1714  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1715  git diff plugins/exchange/nexage_exchange_connector.cc
+ 1716  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1717  git diff plugins/exchange/openrtb_exchange_connector.cc
+ 1718  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1719  git diff examples/bidding_agent_ex.cc
+ 1720  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1721  git diff examples/router-config.json
+ 1722  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1723  git diff core/agent_configuration/agent_config.cc
+ 1724  git diff examples/bidding_agent_ex.cc
+ 1725  vim  examples/bidding_agent_ex.cc
+ 1726  ls
+ 1727  cd ..
+ 1728  git diff > ../backup/gdiff.6Jun128
+ 1729  vim rtbkit/core/agent_configuration/agent_config.cc
+ 1730  git diff  rtbkit/core/agent_configuration/agent_config.cc
+ 1731  vim rtbkit/core/agent_configuration/agent_config.h 
+ 1732  git diff  rtbkit/core/agent_configuration/agent_config.h
+ 1733  vim rtbkit/core/agent_configuration/agent_config.h 
+ 1734  git diff  rtbkit/core/agent_configuration/agent_config.h
+ 1735  vim rtbkit/core/router/router.cc b/rtbkit/core/router/router.cc
+ 1736  git diff  rtbkit/core/router/router.cc
+ 1737  vim rtbkit/examples/bidding_agent_ex.cc
+ 1738  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1739  sync
+ 1740  ls ..
+ 1741  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1742  vim rtbkit/examples/bidding_agent_ex.cc
+ 1743  git status .
+ 1744  vim rtbkit/plugins/exchange/nexage_exchange_connector.cc
+ 1745  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1746  git diff rtbkit/plugins/exchange/openrtb_exchange_connector.cc
+ 1747  git diff rtbkit/plugins/exchange/openrtb_exchange_connector.h
+ 1748  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1749  git diff rtbkit/examples/router-config.json
+ 1750  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1751  git diff rtbkit/sample.redis.conf
+ 1752  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1753  git diff rtbkit/sample.bootstrap.json
+ 1754  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1755  git diff rtbkit/examples/mock_exchange_connector.h
+ 1756  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1757  git diff  rtbkit/testing/mock_exchange.cc
+ 1758  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1759  git diff  rtbkit/examples/integration-config.json
+ 1760  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1761  git diff  rtbkit/plugins/exchange/mopub_exchange_connector.cc
+ 1762  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1763  git diff rtbkit/examples/adserver-config.json
+ 1764  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1765  git add  rtbkit/common/auction_events.cc
+ 1766  git status 
+ 1767  git reset HEAD  rtbkit/common/auction_events.cc
+ 1768  git status 
+ 1769  git diff rtbkit/examples/adserver-config.json
+ 1770  git diff rtbkit/common/auction_events.cc
+ 1771  git status 
+ 1772  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1773  git diff rtbkit/plugins/augmentor/augmentor_base.cc
+ 1774  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1775  git diff rtbkit/plugins/bidding_agent/bidding_agent.cc
+ 1776  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1777  git diff rtbkit/plugins/adserver/http_adserver_connector.cc
+ 1778  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1779  git diff rtbkit/plugins/exchange/nexage_exchange_connector.h
+ 1780  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1781  git diff rtbkit/plugins/exchange/mopub_exchange_connector.h
+ 1782  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1783  git diff rtbkit/plugins/adserver/http_adserver_connector.cc
+ 1784  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1785  git diff soa/service/json_endpoint.cc
+ 1786  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1787  git diff rtbkit/common/currency.cc
+ 1788  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1789  git diff rtbkit/plugins/exchange/openrtb_exchange_connector.cc
+ 1790  vim  rtbkit/plugins/exchange/openrtb_exchange_connector.cc
+ 1791  git diff rtbkit/plugins/exchange/openrtb_exchange_connector.cc
+ 1792  vim  rtbkit/plugins/exchange/openrtb_exchange_connector.cc
+ 1793  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1794  git diff rtbkit/plugins/exchange/nexage_exchange_connector.cc
+ 1795  vim rtbkit/plugins/exchange/nexage_exchange_connector.cc
+ 1796  git diff rtbkit/plugins/exchange/nexage_exchange_connector.cc
+ 1797  vim rtbkit/plugins/exchange/nexage_exchange_connector.cc
+ 1798  git diff rtbkit/plugins/exchange/nexage_exchange_connector.cc
+ 1799  ls -ltr `git status . | grep modified | cut -c 13-`
+ 1800  git diff rtbkit/examples/bidding_agent_ex.cc
+ 1801  vim rtbkit/examples/bidding_agent_ex.cc
+ 1802  git diff rtbkit/examples/bidding_agent_ex.cc
+ 1803  git diff > ../backup/gdiff.6Jun255
+ 1804  exit
+ 1805  cd logs/
+ 1806  ls -ltr | tail -11
+ 1807  ls -ltr | tail -11 
+ 1808  tail -f fixed-price-agent-2528.log
+ 1809  ls -ltr | tail -11 
+ 1810  vim augmentor-2521.log
+ 1811  vim router-2522.log
+ 1812  ls ../..
+ 1813  ls ../../backup/
+ 1814  cd  ../../backup/
+ 1815  ls -ltr
+ 1816  mv gdiff gdiff.3Jun1126
+ 1817  ls -ltr
+ 1818  cd -
+ 1819  vim gdiff.3Jun1126 
+ 1820  ls  -l
+ 1821  vim gdiff.*
+ 1822  diff  gdiff.*
+ 1823  diff  gdiff.3Jun1126 gdiff.6Jun128 | more
+ 1824  vim   gdiff.3Jun1126 gdiff.6Jun128 | more
+ 1825  vim   gdiff.3Jun1126 gdiff.6Jun128 
+ 1826  cd -
+ 1827  ls -ltr | tail -11 
+ 1828  tail -f fixed-price-agent-4604.log
+ 1829  ls -ltr | tail -11 
+ 1830  cd -
+ 1831  vim gdiff.3Jun1126 
+ 1832  cd -
+ 1833  ls -ltr | tail -11 
+ 1834  tail -f fixed-price-agent-5623.log
+ 1835  ls -ltr | tail -11 
+ 1836  tail -f fixed-price-agent-6207.log
+ 1837  ls -ltr | tail -11 
+ 1838  tail -f fixed-price-agent-6791.log
+ 1839  ls -ltr | tail -11 
+ 1840  tail -f fixed-price-agent-7394.log
+ 1841  ls -ltr | tail -11 
+ 1842  tail -f fixed-price-agent-8248.log
+ 1843  cd -
+ 1844  ls -ltr
+ 1845  exit
+ 1846  cd git/3p/rtbkit/
+ 1847  tmux list-sessions
+ 1848  ./launch.sh 
+ 1849  history | grep netstat
+ 1850  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1851  ./launch.sh 
+ 1852  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1853  ./launch.sh 
+ 1854  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1855  ./launch.sh 
+ 1856  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1857  ./launch.sh 
+ 1858  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1859  ./launch.sh 
+ 1860  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1861  ./launch.sh 
+ 1862  exit
+ 1863  cd git/3p/rtbkit/
+ 1864  cd rtbkit/
+ 1865  git status .
+ 1866  vim examples/router-config.json examples/router-config.json.backup
+ 1867  diff  examples/router-config.json examples/router-config.json.backup
+ 1868  vim  plugins/exchange/openrtb_exchange_connector.cc
+ 1869  vim examples/bidding_agent_ex.cc
+ 1870  git status .
+ 1871  cd plugins/exchange/
+ 1872  git status .
+ 1873  vim nexage_exchange_connector.cc openrtb_exchange_connector.cc
+ 1874  exit
+ 1875  cd git/3p/rtbkit/
+ 1876  make compile
+ 1877  exit
+ 1878  cd git/3p/rtbkit/
+ 1879  cd logs/
+ 1880  cd ../../backup/
+ 1881  ls -ltr
+ 1882  diff gdiff.6Jun128 gdiff.6Jun255 
+ 1883  vim gdiff.6Jun128 gdiff.6Jun255 
+ 1884  cd -
+ 1885  ls -ltr | tail -10
+ 1886  vim router-11091.log fixed-price-agent-11099.log
+ 1887  tail -f fixed-price-agent-11099.log
+ 1888  ls -ltr | tail -10
+ 1889  vim router-11784.log
+ 1890  vim fixed-price-agent-11791.log
+ 1891  ls -ltr | tail -10
+ 1892  vim router-11784.log
+ 1893  ls -ltr | tail -10
+ 1894  vim router-11784.log
+ 1895  ls -ltr | tail -10
+ 1896  vim router-11784.log
+ 1897  exit
+ 1898  cd git/3p/rtbkit/
+ 1899  tmux list-sessions 
+ 1900  ./launch.sh 
+ 1901  history | grep netstat
+ 1902  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1903  ./launch.sh 
+ 1904  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1905  exit
+ 1906  cd git/3p/rtbkit/
+ 1907  git status .
+ 1908  ls find . -name "*nexage*json" -print
+ 1909  ls rtbkit/plugins/exchange/testing/
+ 1910  ls rtbkit/plugins/exchange/testing/*.json
+ 1911  cd rtbkit/plugins/exchange/testing/
+ 1912  ls -l *.json
+ 1913  vim *.json
+ 1914  exit
+ 1915  cd git/3p/rtbkit/
+ 1916  cd rtbkit/
+ 1917  git status
+ 1918  cd ..
+ 1919  git status
+ 1920  ls ../backup/
+ 1921  ls ../backup/6June545pm
+ 1922  mkdirs ../backup/6June545pm
+ 1923  mkdir ../backup/6June545pm
+ 1924  git diff >  ../backup/6June545pm/gdiff.txt
+ 1925  ls ../backup/6June545pm/
+ 1926  ls -l ../backup/6June545pm/
+ 1927  cp -p rtbkit/examples/router-config.json.backup ../backup/6June545pm/
+ 1928  cd -
+ 1929  git status
+ 1930  cd plugins/exchange/
+ 1931  grep 150 *.cc
+ 1932  grep 150 *.h
+ 1933  grep 30 *.h
+ 1934  grep 30 *.cc
+ 1935  vim openrtb_exchange_connector.cc nexage_exchange_connector.h
+ 1936  vim openrtb_exchange_connector.cc nexage_exchange_connector.cc 
+ 1937  cd -
+ 1938  git status .
+ 1939  cd core/
+ 1940  git status .
+ 1941  ls -l
+ 1942  cd router/
+ 1943  ls -l
+ 1944  grep parseRequest *.h
+ 1945  grep parseRequest *.cc
+ 1946  grep -i parseRequest *.cc
+ 1947  grep -i parse *.cc
+ 1948  grep -i exchange *
+ 1949  vim router.cc router_runner.cc 
+ 1950  cd ../..
+ 1951  find . -name "*.json" -print
+ 1952  vim ./examples/bidder-config.json
+ 1953  git status .
+ 1954  vim plugins/exchange/openrtb_exchange_connector.cc
+ 1955  vim plugins/exchange/openrtb_exchange_connector.h
+ 1956  find . -name "*[nN]exage*" -print
+ 1957  vim ./plugins/exchange/testing/nexage_exchange_connector_test.cc
+ 1958  cd plugins/exchange/
+ 1959  find . -name "*[nN]exage*" -print
+ 1960  ls
+ 1961  vim exchange.mk 
+ 1962  cd -
+ 1963  cd ..
+ 1964  git status .
+ 1965  vim rtbkit/examples/bidding_agent_ex.cc
+ 1966  exit
+ 1967  cd git/3p/rtbkit/
+ 1968  cd logs/
+ 1969  cd ../../backup/
+ 1970  ls -ltr
+ 1971  ls -ltr gdiff.6Jun255 6June545pm/gdiff.txt 
+ 1972  diff  gdiff.6Jun255 6June545pm/gdiff.txt 
+ 1973  cd -
+ 1974  ls -ltr | tail -11
+ 1975  ls -ltr | tail -10
+ 1976  tail -f fixed-price-agent-15952.log
+ 1977  ls -ltr | tail -10
+ 1978  tail -f fixed-price-agent-16640.log
+ 1979  ls -ltr | tail -10
+ 1980  vim router-16632.log
+ 1981  exit
+ 1982  cd git/3p/rtbkit/
+ 1983  make compile
+ 1984  exit
+ 1985  cd git/3p/rtbkit/
+ 1986  exit
+ 1987  cd git/3p/rtbkit/
+ 1988  exit
+ 1989  cd git/3p/rtbkit/
+ 1990  tmux list-sessions
+ 1991  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1992  ./launch.sh 
+ 1993  sudo  netstat -anp --inet | grep -e 1814 -e 1233
+ 1994  ./launch.sh 
+ 1995  exit
+ 1996  cd git/3p/rtbkit/
+ 1997  exit
+ 1998  cd git/3p/rtbkit/
+ 1999  cd rtbkit/
+ 2000  git status
+ 2001  cd ..
+ 2002  git status
+ 2003  ls ../backup/
+ 2004  ls ../backup/6June545pm/
+ 2005  ls ../backup/9June135pm/
+ 2006  mkdir ../backup/9June135pm/
+ 2007  git diff >  ../backup/9June135pm/gdiff.txt
+ 2008  ls ../backup/9June135pm/
+ 2009  ls -l ../backup/9June135pm/
+ 2010  ls -l ../backup/6June545pm/
+ 2011  ls -l ../backup/6June545pm/gdiff.txt ../backup/9June135pm/gdiff.txt 
+ 2012  diff  ../backup/6June545pm/gdiff.txt ../backup/9June135pm/gdiff.txt 
+ 2013  git status
+ 2014  pwd
+ 2015  ls -l
+ 2016  cd logs/
+ 2017  ls -ltr
+ 2018  ls -ltr | grep sh
+ 2019  ls -ltr | grep js
+ 2020  cd ../..
+ 2021  cd ../richard/
+ 2022  ls
+ 2023  ls -l
+ 2024  cd -
+ 2025  pwd
+ 2026  ls -l
+ 2027  cd local/
+ 2028  ls -l
+ 2029  cd ../xfer/
+ 2030  ls -l
+ 2031  vim run_*
+ 2032  cd ..
+ 2033  ls -l
+ 2034  cd git/
+ 2035  ls -l
+ 2036  ls -l it/
+ 2037  cd it/
+ 2038  git status
+ 2039  cd ../
+ 2040  cd 3p/
+ 2041  ls -l
+ 2042  ls nodebootstrap/
+ 2043  ls -l nodebootstrap/logs/
+ 2044  ls -l
+ 2045  ls -l backup/
+ 2046  cd rtbkit/
+ 2047  ls -l
+ 2048  git status
+ 2049  vim .gitignore 
+ 2050  ls -l testing/
+ 2051  ls -l
+ 2052  s -l node_modules/
+ 2053  ls -l node_modules/
+ 2054  ls -l tmp
+ 2055  ls -l node_modules/
+ 2056  ls -l build/
+ 2057  ls -l
+ 2058  history | grep saved-router
+ 2059  history > history.txt

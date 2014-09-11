@@ -1,0 +1,42 @@
+{
+    "id":"f4093ca4834dfd750452aba7ce0ca00c2705a80a",
+    "at":2,
+    "tmax":893,
+    "imp":[
+        {
+            "id":"1",
+            "tagid":"30027",
+            "banner":{
+                    "w":160,
+                    "h":600,
+                    "battr":[9, 1, 14014, 14002, 8, 14, 14019, 3],
+                    "api":[]
+            }
+        }
+    ],
+    "site":{
+        "id":"14463",
+        "domain":"discovery.com",
+        "name":"",
+        "cat":["IAB1"],
+        "page":"",
+        "publisher":{"id":"2147483647"},
+        "ext":{"mopt":0}
+    },
+    "device":{
+        "ua":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML,like Gecko) Chrome/26.0.1410.65 Safari/537.31",
+        "ip":"10.83.4.24",
+        "language":"en",
+        "devicetype":2,
+        "js":1,
+        "geo":{
+            "country":"USA",
+            "region":"TX"
+        }
+    },
+    "user":{
+        "id":"edcbabb5691ece950fa9da145ee1cf871183ca4d",
+        "buyeruid":"asdf",
+        "ext":{"sessiondepth":1}
+    }
+}

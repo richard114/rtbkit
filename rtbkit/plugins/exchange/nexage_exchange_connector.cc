@@ -213,6 +213,9 @@ parseBidRequest(HttpAuctionHandler & connection,
 
     // Parse the bid request
     ML::Parse_Context context("Bid Request", payload.c_str(), payload.size());
+
+    //cout <<  "NexageExchangeConnector::parseBidRequest:" << payload.c_str() << endl;
+
     res.reset(OpenRtbBidRequestParser::parseBidRequest(context, exchangeName(), exchangeName()));
 
     return res;
@@ -313,10 +316,34 @@ bidRequestCreativeFilter(const BidRequest & request,
 
     // 2) now go throught the spots, to check for blocked attrs
     for (const auto& spot : request.imp) {
-        for (const auto& battr : spot.banner->battr) {
-            if (contains(crinfo->attr, battr)) {
-                this->recordHit("blockedAttr");
-                return false;
+        if (spot.banner)
+        {
+            for (const auto& battr : spot.banner->battr) {
+                if (contains(crinfo->attr, battr)) {
+		    if (spot.video)
+        	    {
+            		for (const auto& battr : spot.video->battr) {
+                	    if (contains(crinfo->attr, battr)) {
+                    		this->recordHit("blockedAttr");
+                    		return false;
+               		    }
+            		}
+        	    }
+                    else
+		    {
+		    	this->recordHit("blockedAttr");
+                    	return false;
+		    }
+                }
+            }
+        }
+	else if (spot.video)
+        {
+            for (const auto& battr : spot.video->battr) {
+                if (contains(crinfo->attr, battr)) {
+                    this->recordHit("blockedAttr");
+                    return false;
+                }
             }
         }
     }
