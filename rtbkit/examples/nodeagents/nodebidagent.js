@@ -44,7 +44,8 @@ var pace = function(){
     budgetController.addAccount(accountParent, addAccountHandler);
     accountAdded = true;
   }
-  budgetController.topupTransferSync(accountFullName, "USD/1M", 1, topupErrorHandler);
+  // Transfer 10 cents every time we pace
+  budgetController.topupTransferSync(accountFullName, "USD/1M", 100000, topupErrorHandler);
 }
 
 var agent = new RTBkit.BiddingAgent("predicativeAgent", services);
@@ -114,7 +115,7 @@ agent.onBidRequest = function(timestamp, auctionId, bidRequest, bids, timeAvaila
   var amount = new RTBkit.MicroUSD(100);
   for (var i=0; i<bids.length; i++){
     // TODO: validate a bid before deciding to put an amount on it
-    bids.bid(i,0,amount,1); // spotId, creativeIndex, price, priority
+    bids.bid(i,bids[i].availableCreatives[0],amount,1); // spotId, creativeIndex, price, priority
   }
   agent.doBid(auctionId, bids, {}, wcm); // auction id, collection of bids, meta, win cost model.
   amount = null;

@@ -7,7 +7,7 @@
 #include <boost/tokenizer.hpp>
 
 #include "mopub_exchange_connector.h"
-#include "rtbkit/plugins/bid_request/openrtb_bid_request.h"
+#include "rtbkit/plugins/bid_request/openrtb_bid_request_parser.h"
 #include "rtbkit/plugins/exchange/http_auction_handler.h"
 #include "rtbkit/core/agent_configuration/agent_config.h"
 #include "rtbkit/openrtb/openrtb_parsing.h"
@@ -194,6 +194,12 @@ getCreativeCompatibility(const Creative & creative,
         ("creative[].providerConfig.mopub.adomain is empty",
          includeReasons);
 
+    getAttr(result, pconf, "nurl", crinfo->nurl, includeReasons);
+    if (crinfo->nurl.empty())
+        result.setIncompatible
+        ("creative[].providerConfig.mopub.nurl is empty",
+         includeReasons);
+
     // Cache the information
     result.info = crinfo;
 
@@ -213,8 +219,10 @@ parseBidRequest(HttpAuctionHandler & connection,
     }
 
     // Parse the bid request
+    // TODO Check with MoPub if they send the x-openrtb-version header
+    // and if they support 2.2 now.
     ML::Parse_Context context("Bid Request", payload.c_str(), payload.size());
-    res.reset(OpenRtbBidRequestParser::parseBidRequest(context, exchangeName(), exchangeName()));
+    res.reset(OpenRTBBidRequestParser::openRTBBidRequestParserFactory("2.1")->parseBidRequest(context, exchangeName(), exchangeName()));
 
     // get restrictions enforced by MoPub.
     //1) blocked category
@@ -372,6 +380,7 @@ setSeatBid(Auction const & auction,
     b.adomain = crinfo->adomain;
     b.crid = crinfo->crid;
     b.iurl = cpinfo->iurl;
+    b.nurl = crinfo->nurl;
 }
 
 template <typename T>
