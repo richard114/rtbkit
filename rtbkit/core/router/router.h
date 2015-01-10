@@ -8,6 +8,7 @@
 #ifndef __rtb__router_h__
 #define __rtb__router_h__
 
+#include <atomic>
 #include "filter_pool.h"
 #include "soa/service/zmq.hpp"
 #include <unordered_map>
@@ -28,6 +29,8 @@
 #include <unordered_set>
 #include <thread>
 #include "rtbkit/common/exchange_connector.h"
+#include "rtbkit/common/post_auction_proxy.h"
+#include "rtbkit/common/analytics_publisher.h"
 #include "rtbkit/core/agent_configuration/blacklist.h"
 #include "rtbkit/core/agent_configuration/agent_configuration_listener.h"
 #include "rtbkit/core/agent_configuration/agent_config.h"
@@ -106,8 +109,9 @@ struct Router : public ServiceBase,
            bool connectPostAuctionLoop = true,
            bool logAuctions = false,
            bool logBids = false,
-           Amount maxBidAmount = USD_CPM(200),
-           int secondsUntilSlowMode = MonitorClient::DefaultCheckTimeout);
+           Amount maxBidAmount = USD_CPM(40),
+           int secondsUntilSlowMode = MonitorClient::DefaultCheckTimeout,
+           Amount slowModeAuthorizedMoneyLimit = USD_CPM(100));
 
     Router(std::shared_ptr<ServiceProxies> services = std::make_shared<ServiceProxies>(),
            const std::string & serviceName = "router",
@@ -115,8 +119,9 @@ struct Router : public ServiceBase,
            bool connectPostAuctionLoop = true,
            bool logAuctions = false,
            bool logBids = false,
-           Amount maxBidAmount = USD_CPM(200),
-           int secondsUntilSlowMode = MonitorClient::DefaultCheckTimeout);
+           Amount maxBidAmount = USD_CPM(40),
+           int secondsUntilSlowMode = MonitorClient::DefaultCheckTimeout,
+           Amount slowModeAuthorizedMoneyLimit = USD_CPM(100));
 
     ~Router();
 
@@ -134,6 +139,9 @@ struct Router : public ServiceBase,
 
     /** Initialize the bidder interface. */
     void initBidderInterface(Json::Value const & json);
+
+    /** Initialize analytics if it is used. */
+    void initAnalytics(const std::string & baseUrl, const int numConnections);
 
     /** Initialize all of the internal data structures and configuration. */
     void init();
@@ -386,7 +394,7 @@ protected:
 
 public:
     // Connection to the post auction loop
-    ZmqNamedProxy postAuctionEndpoint;
+    PostAuctionProxy postAuctionEndpoint;
 
     void updateAllAgents();
 
@@ -399,6 +407,7 @@ public:
     ML::RingBufferSRMW<std::shared_ptr<AugmentationInfo> > startBiddingBuffer;
     ML::RingBufferSRMW<std::shared_ptr<Auction> > submittedBuffer;
     ML::RingBufferSWMR<std::shared_ptr<Auction> > auctionGraveyard;
+    ML::RingBufferSRMW<BidMessage> doBidBuffer;
 
     ML::Wakeup_Fd wakeupMainLoop;
 
@@ -432,6 +441,10 @@ public:
     void returnErrorResponse(const std::vector<std::string> & message,
                              const std::string & error);
 
+    void returnInvalidBid(const std::string &agent, const std::string &bidData,
+                          const std::shared_ptr<Auction> &auction,
+                          const char *reason, const char *message, ...);
+
     void doShutdown();
 
     /** Perform initial auction processing to see how it can be used.  Returns a
@@ -463,6 +476,9 @@ public:
 
     /** An agent bid on an auction.  Arrange for this bid to be recorded. */
     void doBid(const std::vector<std::string> & message);
+
+    void doBidImpl(const BidMessage &message,
+                   const std::vector<std::string> &originalMessage = std::vector<std::string>());
 
     /** An agent responded to a ping message.  Arrange for the ping time
         to be recorded. */
@@ -576,6 +592,8 @@ public:
     {
         logger.publish("ROUTERERROR", Date::now().print(5),
                        function, exception, args...);
+        analytics.publish("ROUTERERROR", Date::now().print(5),
+                       function, exception, args...);
         recordHit("error.%s", function);
     }
 
@@ -674,6 +692,13 @@ public:
         logger.publish(channel, Date::now().print(5), args...);
     }
 
+    /** Log a given message to analytics endpoint on given channel. */
+    template<typename... Args>
+    void logMessageToAnalytics(const std::string & channel, Args... args)
+    {
+        analytics.publish(channel, Date::now().print(5), args...);
+    }
+
     /** Log a given message to the given channel. */
     template<typename... Args>
     void logMessageNoTimestamp(const std::string & channel, Args... args)
@@ -721,6 +746,7 @@ public:
     Date getCurrentTime() const { return Date::now(); }
 
     ZmqNamedPublisher logger;
+    AnalyticsPublisher analytics;
 
     /** Debug only */
     bool doDebug;
@@ -741,8 +767,11 @@ public:
     /* Client connection to the Monitor, determines if we can process bid
        requests */
     MonitorClient monitorClient;
+    // TODO Make this thread safe
     Date slowModeLastAuction;
-    int slowModeCount;
+    std::atomic<bool> slowModePeriodicSpentReached;    
+    Amount slowModeAuthorizedMoneyLimit;
+    uint64_t accumulatedBidMoneyInThisPeriod;
 
     /* MONITOR PROVIDER */
     /* Post service health status to Monitor */
@@ -754,6 +783,8 @@ public:
     /* MonitorProvider interface */
     std::string getProviderClass() const;
     MonitorIndicator getProviderIndicators() const;
+
+    double slowModeTolerance;
 };
 
 

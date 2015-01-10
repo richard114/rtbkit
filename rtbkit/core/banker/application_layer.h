@@ -84,7 +84,7 @@ struct ApplicationLayer : public MessageLoop {
 
 struct HttpLayer : public ApplicationLayer {
 
-    void init(std::string bankerUri);
+    void init(std::string bankerUri, int activeConnections = 4, bool tcpNoDelay = false);
 
     void addAccount(
                     const AccountKey &account,
@@ -136,7 +136,7 @@ private:
 /*****************************************************************************/
 
 struct ZmqLayer : public ApplicationLayer {
-    void init(const std::shared_ptr<ConfigurationService> &config,
+    void init(const std::shared_ptr<ServiceProxies> &services,
               const std::string &bankerServiceName = "rtbBanker");
 
     void addAccount(

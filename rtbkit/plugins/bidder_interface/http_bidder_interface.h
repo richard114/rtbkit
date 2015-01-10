@@ -26,39 +26,52 @@ struct HttpBidderInterface : public BidderInterface
                             double timeLeftMs,
                             std::map<std::string, BidInfo> const & bidders);
 
-    void sendWinLossMessage(MatchedWinLoss const & event);
+    void sendWinLossMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                            MatchedWinLoss const & event);
 
-    void sendLossMessage(std::string const & agent,
+    void sendLossMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                         std::string const & agent,
                          std::string const & id);
 
-    void sendCampaignEventMessage(std::string const & agent,
+    void sendCampaignEventMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                                  std::string const & agent,
                                   MatchedCampaignEvent const & event);
 
-    void sendBidLostMessage(std::string const & agent,
+    void sendBidLostMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                            std::string const & agent,
                             std::shared_ptr<Auction> const & auction);
 
-    void sendBidDroppedMessage(std::string const & agent,
+    void sendBidDroppedMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                               std::string const & agent,
                                std::shared_ptr<Auction> const & auction);
 
-    void sendBidInvalidMessage(std::string const & agent,
+    void sendBidInvalidMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                               std::string const & agent,
                                std::string const & reason,
                                std::shared_ptr<Auction> const & auction);
 
-    void sendNoBudgetMessage(std::string const & agent,
+    void sendNoBudgetMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                             std::string const & agent,
                              std::shared_ptr<Auction> const & auction);
 
-    void sendTooLateMessage(std::string const & agent,
+    void sendTooLateMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                            std::string const & agent,
                             std::shared_ptr<Auction> const & auction);
 
-    void sendMessage(std::string const & agent,
+    void sendMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                     std::string const & agent,
                      std::string const & message);
 
-    void sendErrorMessage(std::string const & agent,
+    void sendErrorMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                          std::string const & agent,
                           std::string const & error,
                           std::vector<std::string> const & payload);
 
-    void sendPingMessage(std::string const & agent,
+    void sendPingMessage(const std::shared_ptr<const AgentConfig>& agentConfig,
+                         std::string const & agent,
                          int ping);
+
+    void registerLoopMonitor(LoopMonitor *monitor) const;
 
     virtual void tagRequest(OpenRTB::BidRequest &request,
                             const std::map<std::string, BidInfo> &bidders) const;
@@ -68,11 +81,17 @@ struct HttpBidderInterface : public BidderInterface
     static Logging::Category trace;
     
 private:
-    bool prepareRequest(OpenRTB::BidRequest &request,
-                        const RTBKIT::BidRequest &originalRequest,
-                        const std::map<std::string, BidInfo> &bidders) const;
-    void submitBids(const std::string &agent, Id auctionId,
-                         const Bids &bids, WinCostModel wcm);
+
+    struct AgentBidsInfo {
+        std::shared_ptr<const AgentConfig> agentConfig;
+        std::string agentName;
+        Id auctionId;
+        Bids bids;
+        WinCostModel wcm;
+    };
+
+    typedef std::map<std::string, AgentBidsInfo> AgentBids;
+
     MessageLoop loop;
     std::shared_ptr<HttpClient> httpClientRouter;
     std::shared_ptr<HttpClient> httpClientAdserverWins;
@@ -82,6 +101,16 @@ private:
     std::string adserverHost;
     uint16_t adserverWinPort;
     uint16_t adserverEventPort;
+
+    void submitBids(AgentBids &info, size_t impressionsCount);
+    bool prepareRequest(OpenRTB::BidRequest &request,
+                        const RTBKIT::BidRequest &originalRequest,
+                        const std::shared_ptr<Auction> &auction,
+                        const std::map<std::string, BidInfo> &bidders) const;
+    void injectBids(const std::string &agent, Id auctionId,
+                    const Bids &bids, WinCostModel wcm);
+
+    void recordError(const std::string &key);
 
 };
 

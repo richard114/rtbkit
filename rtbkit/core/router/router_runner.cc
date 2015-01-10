@@ -18,6 +18,7 @@
 #include "rtbkit/common/bidder_interface.h"
 #include "rtbkit/core/router/router.h"
 #include "rtbkit/core/banker/slave_banker.h"
+#include "soa/service/process_stats.h"
 #include "jml/arch/timers.h"
 #include "jml/utils/file_functions.h"
 
@@ -26,12 +27,15 @@ using namespace ML;
 using namespace Datacratic;
 using namespace RTBKIT;
 
+Logging::Category RouterRunner::print("RouterRunner");
+Logging::Category RouterRunner::error("RouterRUnner Error", RouterRunner::print);
+Logging::Category RouterRunner::trace("RouterRunner Trace", RouterRunner::print);
+
 static inline Json::Value loadJsonFromFile(const std::string & filename)
 {
     ML::File_Read_Buffer buf(filename);
     return Json::parse(std::string(buf.start(), buf.end()));
 }
-
 
 /*****************************************************************************/
 /* ROUTER RUNNER                                                             */
@@ -46,9 +50,12 @@ RouterRunner() :
     noPostAuctionLoop(false),
     logAuctions(false),
     logBids(false),
-    maxBidPrice(200),
+    maxBidPrice(40),
     slowModeTimeout(MonitorClient::DefaultCheckTimeout),
-    useHttpBanker(false)
+    slowModeTolerance(MonitorClient::DefaultTolerance),
+    slowModeMoneyLimit(""),
+    analyticsOn(false),
+    analyticsConnections(1)
 {
 }
 
@@ -65,6 +72,8 @@ doOptions(int argc, char ** argv,
          "number of seconds after which a loss is assumed")
         ("slowModeTimeout", value<int>(&slowModeTimeout),
          "number of seconds after which the system consider to be in SlowMode")
+        ("slowModeTolerance", value<int>(&slowModeTolerance),
+         "number of seconds allowed to bid normally since last successful monitor check") 
         ("no-post-auction-loop", bool_switch(&noPostAuctionLoop),
          "don't connect to the post auction loop")
         ("log-uri", value<vector<string> >(&logUris),
@@ -73,8 +82,6 @@ doOptions(int argc, char ** argv,
          "configuration file with exchange data")
         ("bidder,b", value<string>(&bidderConfigurationFile),
          "configuration file with bidder interface data")
-        ("use-http-banker", bool_switch(&useHttpBanker),
-         "Communicate with the MasterBanker over http")
         ("log-auctions", value<bool>(&logAuctions)->zero_tokens(),
          "log auction requests")
         ("log-bids", value<bool>(&logBids)->zero_tokens(),
@@ -82,12 +89,19 @@ doOptions(int argc, char ** argv,
         ("max-bid-price", value(&maxBidPrice),
          "maximum bid price accepted by router")
         ("spend-rate", value<string>(&spendRate)->default_value("100000USD/1M"),
-         "Amount of budget in USD to be periodically re-authorized (default 100000USD/1M)");
+         "Amount of budget in USD to be periodically re-authorized (default 100000USD/1M)")
+        ("slow-mode-money-limit,s", value<string>(&slowModeMoneyLimit)->default_value("100000USD/1M"),
+         "Amout of money authorized per second when router enters slow mode (default is 100000USD/1M).")
+        ("analytics,a", bool_switch(&analyticsOn),
+         "Send data to analytics logger.")
+        ("analytics-connections", value<int>(&analyticsConnections),
+         "Number of connections for the analytics publisher.");
 
     options_description all_opt = opts;
     all_opt
         .add(serviceArgs.makeProgramOptions())
-        .add(router_options);
+        .add(router_options)
+        .add(bankerArgs.makeProgramOptions());
     all_opt.add_options()
         ("help,h", "print this message");
     
@@ -115,31 +129,41 @@ init()
     exchangeConfig = loadJsonFromFile(exchangeConfigurationFile);
     bidderConfig = loadJsonFromFile(bidderConfigurationFile);
 
+    const auto amountSlowModeMoneyLimit = Amount::parse(slowModeMoneyLimit);
+    const auto maxBidPriceAmount = USD_CPM(maxBidPrice);
+
+    if (maxBidPriceAmount > amountSlowModeMoneyLimit) {
+        THROW(error) << "max-bid-price and slow-mode-money-limit "
+            << "configuration is invalid" << endl
+            << "usage:  max-bid-price must be lower or equal to the "
+            << "slow-mode-money-limit." << endl
+            << "max-bid-price= " << maxBidPriceAmount << endl
+            << "slow-mode-money-limit= " << amountSlowModeMoneyLimit <<endl;
+    }
+
     auto connectPostAuctionLoop = !noPostAuctionLoop;
     router = std::make_shared<Router>(proxies, serviceName, lossSeconds,
                                       connectPostAuctionLoop,
                                       logAuctions, logBids,
                                       USD_CPM(maxBidPrice),
-                                      slowModeTimeout);
+                                      slowModeTimeout, amountSlowModeMoneyLimit);
+    router->slowModeTolerance = slowModeTolerance;
     router->initBidderInterface(bidderConfig);
+    if (analyticsOn) {
+        const auto & analyticsUri = proxies->params["analytics-uri"].asString();
+        if (!analyticsUri.empty()) {
+            router->initAnalytics(analyticsUri, analyticsConnections);
+        }
+        else
+            LOG(print) << "analytics-uri is not in the config" << endl;
+    }
     router->init();
 
     const auto amount = Amount::parse(spendRate);
-    banker = std::make_shared<SlaveBanker>(router->serviceName() + ".slaveBanker",
-                                           CurrencyPool(amount));
-    std::shared_ptr<ApplicationLayer> layer;
-    if (useHttpBanker) {
-        auto bankerUri = proxies->bankerUri;
-        ExcCheck(!bankerUri.empty(),
-                "the banker-uri must be specified in the bootstrap.json");
-        layer = make_application_layer<HttpLayer>(bankerUri);
-        std::cerr << "using http interface for the MasterBanker" << std::endl;
-    }
-    else {
-        layer = make_application_layer<ZmqLayer>(proxies->config);
-        std::cerr << "using zmq interface for the MasterBanker" << std::endl;
-    }
-    banker->setApplicationLayer(layer);
+    banker = bankerArgs.makeBankerWithArgs(proxies,
+                                           router->serviceName() + ".slaveBanker",
+                                           CurrencyPool(amount),
+                                           bankerArgs.batched);
 
     router->setBanker(banker);
     router->bindTcp();
@@ -177,7 +201,16 @@ int main(int argc, char ** argv)
         item->enableUntil(Date::positiveInfinity());
     });
 
+    ProcessStats lastStats;
+    auto onStat = [&] (std::string key, double val) {
+        runner.router->recordStableLevel(val, key);
+    };
+
     for (;;) {
-        ML::sleep(10.0);
+        ML::sleep(1.0);
+
+        ProcessStats curStats;
+        ProcessStats::logToCallback(onStat, lastStats, curStats, "process");
+        lastStats = curStats;
     }
 }

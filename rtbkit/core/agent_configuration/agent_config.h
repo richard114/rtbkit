@@ -16,6 +16,7 @@
 #include "rtbkit/common/bid_request.h"
 #include "include_exclude.h"
 #include "rtbkit/common/account_key.h"
+#include "rtbkit/core/agent_configuration/latlonrad.h"
 
 namespace RTBKIT {
 
@@ -79,6 +80,24 @@ struct Creative {
     IncludeExclude<std::string> languageFilter;
     IncludeExclude<CachedRegex<boost::u32regex, Datacratic::UnicodeString> > locationFilter;
     IncludeExclude<std::string> exchangeFilter;
+
+    struct SegmentInfo {
+
+        SegmentInfo() : excludeIfNotPresent(false){}
+
+        bool excludeIfNotPresent;
+        SegmentList include;
+        SegmentList exclude;
+
+        void fromJson(const Json::Value & val);
+
+        Json::Value toJson() const;
+
+        IncludeExcludeResult process(const SegmentList & segments) const;
+
+    };
+
+    std::map<std::string, SegmentInfo> segments;
 
     /** Is the given ad spot compatible with the given creative format? */
     bool compatible(const AdSpot & spot) const;
@@ -263,6 +282,8 @@ struct AgentConfig {
     IncludeExclude<CachedRegex<boost::regex, std::string> > urlFilter;
     IncludeExclude<CachedRegex<boost::regex, std::string> > languageFilter;
     IncludeExclude<CachedRegex<boost::u32regex, Datacratic::UnicodeString> > locationFilter;
+    LatLonRadList latLongDevFilter; // latitude and longitude device filter
+
 
     struct SegmentInfo {
         SegmentInfo()
