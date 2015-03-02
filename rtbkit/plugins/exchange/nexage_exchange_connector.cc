@@ -257,7 +257,8 @@ setSeatBid(Auction const & auction,
     NexageCreativeConfiguration::Context ctx = {
         creative,
         resp,
-        *auction.request
+        *auction.request,
+        spotNum
     };
 
     // Put in the variable parts
@@ -348,10 +349,10 @@ bidRequestCreativeFilter(const BidRequest & request,
 namespace {
 using namespace RTBKIT;
 
-struct Init {
-    Init() {
+struct AtInit {
+    AtInit() {
         ExchangeConnector::registerFactory<NexageExchangeConnector>();
     }
-} init;
+} atInit;
 }
 

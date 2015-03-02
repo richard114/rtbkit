@@ -33,6 +33,7 @@ public:
         const Creative& creative;
         const Auction::Response& response;
         const BidRequest& bidrequest;
+        int spotNum;
     };
 
     typedef std::function<std::string &(std::string &)> ExpanderFilterCallable;
@@ -83,8 +84,13 @@ public:
 
         {
             "bidrequest.user.id",
-            [](const Context& ctx)
-            { return ctx.bidrequest.user->id.toString(); }
+            [](const Context& ctx) -> std::string
+            {
+                if ( ctx.bidrequest.user){
+                    return ctx.bidrequest.user->id.toString();
+                }
+                return "";
+            }
         },
 
         {
@@ -119,6 +125,11 @@ public:
             [](const Context& ctx)
             { return ctx.response.account.toString(); }
         },
+        {
+            "imp.id",
+            [](const Context& context)
+            { return context.bidrequest.imp[context.spotNum].id.toString(); }
+        }
         };
 
         filters_ = {
